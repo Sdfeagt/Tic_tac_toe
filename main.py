@@ -1,15 +1,15 @@
 from IPython.display import clear_output
 
 
-# Todo, there are some bugs in the code, mostly with translating the input into the board, though some problems with win function also exists
+# Todo: The part of the function that ensures that one box isn't chosen more than once seems to malfunction, it has to be redone.
 
 
 def borad(board):
     cl = clear_output()
     print(board[0] + "|" + board[1] + "|" + board[2])
-    print("________")
+    print("_____")
     print(board[3] + "|" + board[4] + "|" + board[5])
-    print("________")
+    print("_____")
     print(board[6] + "|" + board[7] + "|" + board[8])
 
 
@@ -95,9 +95,11 @@ def main():
                 if list_of_all_moves_1[i][0] == list_of_all_moves_1[i + 1][0] == list_of_all_moves_1[i + 2][0]:
                     win_1 = 1
                     print("Player 1 wins!")
-                if list_of_all_moves_1[i][1] == list_of_all_moves_1[i + 1][1] == list_of_all_moves_1[i + 2][1]:
+                    break
+                elif list_of_all_moves_1[i][1] == list_of_all_moves_1[i + 1][1] == list_of_all_moves_1[i + 2][1]:
                     win_1 = 1
                     print("Player 1 wins!")
+                    break
             for item_1 in range(0, len(list_of_all_moves_1)):
                 if list_of_all_moves_1[item_1] == [1, 1]:
                     cross_1 = cross_1 + 1
@@ -108,6 +110,7 @@ def main():
                 if cross_1 == 3:
                     win_1 = 1
                     print("Player 1 wins!")
+                    break
                 if list_of_all_moves_1[item_1] == [1, 3]:
                     cross_2 = cross_2 + 1
                 if list_of_all_moves_1[item_1] == [2, 2]:
@@ -117,6 +120,7 @@ def main():
                 if cross_2 == 3:
                     win_1 = 1
                     print("Player 1 wins!")
+                    break
         all_moves = len(list_of_all_moves_1) + len(list_of_all_moves_2)
 
         while (0 > x_cord_2 or x_cord_2 > 3) and (0 > y_cord_2 or y_cord_2 > 3) and win_1 != 1:
@@ -161,9 +165,11 @@ def main():
                 if list_of_all_moves_2[j][0] == list_of_all_moves_2[j + 1][0] == list_of_all_moves_2[j + 2][0]:
                     win_2 = 1
                     print("Player 2 wins!")
-                if list_of_all_moves_2[j][1] == list_of_all_moves_2[j + 1][1] == list_of_all_moves_2[j + 2][1]:
+                    break
+                elif list_of_all_moves_2[j][1] == list_of_all_moves_2[j + 1][1] == list_of_all_moves_2[j + 2][1]:
                     win_2 = 1
                     print("Player 2 wins!")
+                    break
             for item_2 in range(0, len(list_of_all_moves_2)):
                 if list_of_all_moves_2[item_2] == [1, 1]:
                     cross_12 = cross_12 + 1
@@ -174,6 +180,7 @@ def main():
                 if cross_12 == 3:
                     win_2 = 1
                     print("Player 2 wins!")
+                    break
                 if list_of_all_moves_2[item_2] == [1, 3]:
                     cross_22 = cross_22 + 1
                 if list_of_all_moves_2[item_2] == [2, 2]:
@@ -183,6 +190,7 @@ def main():
                 if cross_22 == 3:
                     win_2 = 1
                     print("Player 2 wins!")
+                    break
 
         x_cord_2 = -2
         y_cord_2 = -2
