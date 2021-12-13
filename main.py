@@ -1,5 +1,6 @@
 from IPython.display import clear_output
 
+
 # Todo, there are some bugs in the code, mostly with translating the input into the board, though some problems with win function also exists
 
 
@@ -10,8 +11,6 @@ def borad(board):
     print(board[3] + "|" + board[4] + "|" + board[5])
     print("________")
     print(board[6] + "|" + board[7] + "|" + board[8])
-
-
 
 
 def main():
@@ -70,16 +69,16 @@ def main():
             if list_of_this_cord_1 == [1, 2]:
                 board[3] = Player_1
             if list_of_this_cord_1 == [1, 3]:
-                board[8] = Player_1
+                board[0] = Player_1
             if list_of_this_cord_1 == [2, 1]:
                 board[7] = Player_1
             if list_of_this_cord_1 == [2, 2]:
                 board[4] = Player_1
-            if list_of_this_cord_1 == [3,2]:
+            if list_of_this_cord_1 == [3, 2]:
                 board[5] = Player_1
             if list_of_this_cord_1 == [3, 1]:
-                board[0] = Player_1
-            if list_of_this_cord_1 == [2,3]:
+                board[8] = Player_1
+            if list_of_this_cord_1 == [2, 3]:
                 board[1] = Player_1
             if list_of_this_cord_1 == [3, 3]:
                 board[2] = Player_1
@@ -140,16 +139,16 @@ def main():
             if list_of_this_cord_2 == [1, 2]:
                 board[3] = Player_2
             if list_of_this_cord_2 == [1, 3]:
-                board[8] = Player_2
+                board[0] = Player_2
             if list_of_this_cord_2 == [2, 1]:
                 board[7] = Player_2
             if list_of_this_cord_2 == [2, 2]:
                 board[4] = Player_2
-            if list_of_this_cord_2 == [3,2]:
+            if list_of_this_cord_2 == [3, 2]:
                 board[5] = Player_2
             if list_of_this_cord_2 == [3, 1]:
-                board[0] = Player_2
-            if list_of_this_cord_2 == [2,3]:
+                board[8] = Player_2
+            if list_of_this_cord_2 == [2, 3]:
                 board[1] = Player_2
             if list_of_this_cord_2 == [3, 3]:
                 board[2] = Player_2
