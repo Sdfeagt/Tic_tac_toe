@@ -13,6 +13,27 @@ def borad(board):
     print(board[6] + "|" + board[7] + "|" + board[8])
 
 
+def translate_to_board(cords, board, player):
+    if cords == [1, 1]:
+        board[6] = player
+    if cords == [1, 2]:
+        board[3] = player
+    if cords == [1, 3]:
+        board[0] = player
+    if cords == [2, 1]:
+        board[7] = player
+    if cords == [2, 2]:
+        board[4] = player
+    if cords == [3, 2]:
+        board[5] = player
+    if cords == [3, 1]:
+        board[8] = player
+    if cords == [2, 3]:
+        board[1] = player
+    if cords == [3, 3]:
+        board[2] = player
+
+
 def main():
     Player_1 = ""
     Player_2 = ""
@@ -30,7 +51,6 @@ def main():
     cross_22 = 0
     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     all_moves = 0
-    cant_choose = 0
     cross_1_only_once_1 = 0
     cross_1_only_once_2 = 0
     cross_1_only_once_3 = 0
@@ -76,35 +96,16 @@ def main():
                     print("This field is already taken by another player!")
                     x_cord_1 = -1
                     y_cord_1 = -1
-                    cant_choose = 1
                     break
             for item_check_1_2 in range(0, len(list_of_all_moves_2)):
                 if list_of_all_moves_2[item_check_1_2] == [x_cord_1, y_cord_1]:
                     print("This field is already taken by another player!")
                     x_cord_1 = -1
                     y_cord_1 = -1
-                    cant_choose = 1
                     break
         print("Player 1 has chosen a field {},{}! What an exciting move!".format(x_cord_1, y_cord_1))
         list_of_this_cord_1 = [x_cord_1, y_cord_1]
-        if list_of_this_cord_1 == [1, 1]:
-            board[6] = Player_1
-        if list_of_this_cord_1 == [1, 2]:
-            board[3] = Player_1
-        if list_of_this_cord_1 == [1, 3]:
-            board[0] = Player_1
-        if list_of_this_cord_1 == [2, 1]:
-            board[7] = Player_1
-        if list_of_this_cord_1 == [2, 2]:
-            board[4] = Player_1
-        if list_of_this_cord_1 == [3, 2]:
-            board[5] = Player_1
-        if list_of_this_cord_1 == [3, 1]:
-            board[8] = Player_1
-        if list_of_this_cord_1 == [2, 3]:
-            board[1] = Player_1
-        if list_of_this_cord_1 == [3, 3]:
-            board[2] = Player_1
+        translate_to_board(list_of_this_cord_1, board, Player_1)
         borad(board)
 
         list_of_all_moves_1.append(list_of_this_cord_1)
@@ -118,12 +119,10 @@ def main():
                 if list_of_all_moves_1[i][0] == list_of_all_moves_1[i + 1][0] == list_of_all_moves_1[i + 2][0]:
                     win_1 = 1
                     print("Player 1 wins!")
-                    print("Debugging. Something wrong with X")
                     break
                 elif list_of_all_moves_1[i][1] == list_of_all_moves_1[i + 1][1] == list_of_all_moves_1[i + 2][1]:
                     win_1 = 1
                     print("Player 1 wins!")
-                    print("Debugging. Something wrong with Y")
                     break
             for item_1 in range(0, len(list_of_all_moves_1)):
                 if list_of_all_moves_1[item_1] == [1, 1] and cross_1_only_once_1 == 0:
@@ -138,7 +137,6 @@ def main():
                 if cross_1 == 3:
                     win_1 = 1
                     print("Player 1 wins!")
-                    print("Debugging. Something wrong with diagonal")
                     break
                 if list_of_all_moves_1[item_1] == [1, 3] and cross_2_only_once_1 == 0:
                     cross_2 = cross_2 + 1
@@ -152,7 +150,6 @@ def main():
                 if cross_2 == 3:
                     win_1 = 1
                     print("Player 1 wins!")
-                    print("Debugging. Something wrong with diagonal")
                     break
         while (0 > x_cord_2 or x_cord_2 > 3) and (0 > y_cord_2 or y_cord_2 > 3) and win_1 != 1:
             move_2 = input("Player 2, what's your move?\n")
@@ -177,28 +174,11 @@ def main():
                     break
         if win_1 != 1:
             print("Player 2 has chosen a field {},{}! What an exciting move!".format(x_cord_2, y_cord_2))
-        list_of_this_cord_2 = [x_cord_2, y_cord_2]
-        if list_of_this_cord_2 == [1, 1]:
-            board[6] = Player_2
-        if list_of_this_cord_2 == [1, 2]:
-            board[3] = Player_2
-        if list_of_this_cord_2 == [1, 3]:
-            board[0] = Player_2
-        if list_of_this_cord_2 == [2, 1]:
-            board[7] = Player_2
-        if list_of_this_cord_2 == [2, 2]:
-            board[4] = Player_2
-        if list_of_this_cord_2 == [3, 2]:
-            board[5] = Player_2
-        if list_of_this_cord_2 == [3, 1]:
-            board[8] = Player_2
-        if list_of_this_cord_2 == [2, 3]:
-            board[1] = Player_2
-        if list_of_this_cord_2 == [3, 3]:
-            board[2] = Player_2
-        borad(board)
-        list_of_all_moves_2.append(list_of_this_cord_2)
-        list_of_all_moves_2.sort(key=lambda x: x[0])
+            list_of_this_cord_2 = [x_cord_2, y_cord_2]
+            translate_to_board(list_of_this_cord_2, board, Player_2)
+            borad(board)
+            list_of_all_moves_2.append(list_of_this_cord_2)
+            list_of_all_moves_2.sort(key=lambda x: x[0])
 
         if len(list_of_all_moves_2) >= 3 and win_1 != 1:
             for j in range(0, len(list_of_all_moves_2) - 2):
