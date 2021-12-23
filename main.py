@@ -1,5 +1,7 @@
-# Todo: I'm happy with the current amount of individual functions. Now the plan is to create a "player" function and just call it twice. Code will be way shorter this way.
-def borad(board):
+import random
+
+
+def board_function(board):
     print(board[0] + "|" + board[1] + "|" + board[2])
     print("_____")
     print(board[3] + "|" + board[4] + "|" + board[5])
@@ -28,7 +30,7 @@ def translate_to_board(cords, board, player):
         board[2] = player
 
 
-def diagnoal_win_1(list_of_moves):
+def diagonal_win_1(list_of_moves):
     cross = 0
     list_of_moves_internal_use = list_of_moves
     for item_1 in range(0, len(list_of_moves_internal_use)):
@@ -44,7 +46,7 @@ def diagnoal_win_1(list_of_moves):
         return 0
 
 
-def diagnoal_win_2(list_of_moves):
+def diagonal_win_2(list_of_moves):
     cross = 0
     list_of_moves_internal_use = list_of_moves
     for item_1 in range(0, len(list_of_moves_internal_use)):
@@ -58,6 +60,23 @@ def diagnoal_win_2(list_of_moves):
         return 1
     else:
         return 0
+
+
+def random_text():
+    x = random.randint(1, 5)
+    return_string = ""
+
+    if x == 1:
+        return_string = "What an exciting move!"
+    if x == 2:
+        return_string = "You didn't see that coming!"
+    if x == 3:
+        return_string = "Will it be a game winner?"
+    if x == 4:
+        return_string = "What a devastating blow!"
+    if x == 5:
+        return_string = "It's impossible to counter!"
+    return return_string
 
 
 def main():
@@ -89,7 +108,7 @@ def main():
     print("Let the game begin! Player 1 will play as {:s}, and Player 2 as {:s}.".format(Player_1, Player_2))
     print("You indicate the place you want to move by using (X,Y) coordinates, with lower left corner as (0,0)")
 
-    borad(board)
+    board_function(board)
 
     while win_1 != 1 and win_2 != 1 and all_moves != 9:
 
@@ -114,10 +133,10 @@ def main():
                     x_cord_1 = -1
                     y_cord_1 = -1
                     break
-        print("Player 1 has chosen a field {},{}! What an exciting move!".format(x_cord_1, y_cord_1))
+        print("Player 1 has chosen a field {},{}! {}".format(x_cord_1, y_cord_1, random_text()))
         list_of_this_cord_1 = [x_cord_1, y_cord_1]
         translate_to_board(list_of_this_cord_1, board, Player_1)
-        borad(board)
+        board_function(board)
 
         list_of_all_moves_1.append(list_of_this_cord_1)
         list_of_all_moves_1.sort(key=lambda x: x[0])
@@ -137,11 +156,11 @@ def main():
                     print("Player 1 wins!")
                     break
                 list_of_all_moves_1.sort(key=lambda x: x[0])
-            diagonal_11 = diagnoal_win_1(list_of_all_moves_1)
+            diagonal_11 = diagonal_win_1(list_of_all_moves_1)
             if diagonal_11 == 1:
                 print("Player 1 won!")
                 break
-            diagonal_12 = diagnoal_win_2(list_of_all_moves_1)
+            diagonal_12 = diagonal_win_2(list_of_all_moves_1)
             if diagonal_12 == 1:
                 print("Player 1 won!")
                 break
@@ -167,10 +186,10 @@ def main():
                     y_cord_2 = -1
                     break
         if win_1 != 1:
-            print("Player 2 has chosen a field {},{}! What an exciting move!".format(x_cord_2, y_cord_2))
+            print("Player 2 has chosen a field {},{}! {}".format(x_cord_2, y_cord_2, random_text()))
             list_of_this_cord_2 = [x_cord_2, y_cord_2]
             translate_to_board(list_of_this_cord_2, board, Player_2)
-            borad(board)
+            board_function(board)
             list_of_all_moves_2.append(list_of_this_cord_2)
             list_of_all_moves_2.sort(key=lambda x: x[0])
 
@@ -186,11 +205,11 @@ def main():
                     print("Player 2 wins!")
                     break
                 list_of_all_moves_2.sort(key=lambda x: x[0])
-            diagonal_21 = diagnoal_win_1(list_of_all_moves_2)
+            diagonal_21 = diagonal_win_1(list_of_all_moves_2)
             if diagonal_21 == 1:
                 print("Player 2 won!")
                 break
-            diagonal_22 = diagnoal_win_2(list_of_all_moves_2)
+            diagonal_22 = diagonal_win_2(list_of_all_moves_2)
             if diagonal_22 == 1:
                 print("Player 2 won!")
                 break
