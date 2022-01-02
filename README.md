@@ -1,5 +1,5 @@
-Hello, and welcome to my very first project! From the perspective of an already created program, it really seems to be incredibly easy to code. This project was created to test my skills I acquired
-in my first python programming course.I was able to create most of the code in 2 days, but I've spent some more time creating functions, and cleaning the code. I'm overall very happy with the code
+Hello, and welcome to my very first project! This program was created to test my skills I acquired
+in my first python programming course. I was able to create most of the code in 2 days, but I've spent some more time creating functions, and cleaning the code. I'm overall very happy with the code
 I've created. The program itself is located in one file, main.py. It's made out of 5 functions, excluding main.
 
 board_function is responsible for outputting the current board, with all previous moves of players. This function gets a 9 index long list, filled with corresponding player moves, or just spaces.
