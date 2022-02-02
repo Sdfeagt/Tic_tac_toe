@@ -106,7 +106,7 @@ def main():
             print("Wrong input! please write 'X' ot '0'!")
 
     print("Let the game begin! Player 1 will play as {:s}, and Player 2 as {:s}.".format(Player_1, Player_2))
-    print("You indicate the place you want to move by using (X,Y) coordinates, with lower left corner as (0,0)")
+    print("You indicate the place you want to move by using (X,Y) coordinates, with lower left corner as (1,1)")
 
     board_function(board)
 
@@ -117,9 +117,9 @@ def main():
             move_1 = move_1.split(",")
             x_cord_1 = int(move_1[0])
             y_cord_1 = int(move_1[1])
-            if 0 > x_cord_1 or x_cord_1 > 3:
+            if 0 >= x_cord_1 or x_cord_1 > 3:
                 print("X coordinate is outside of the scope! Repeat the input.\n")
-            if 0 > y_cord_1 or y_cord_1 > 3:
+            if 0 >= y_cord_1 or y_cord_1 > 3:
                 print("Y coordinate is outside of the scope! Repeat the input.\n")
             for item_check_1_1 in range(0, len(list_of_all_moves_1)):
                 if list_of_all_moves_1[item_check_1_1] == [x_cord_1, y_cord_1]:
@@ -175,9 +175,9 @@ def main():
             move_2 = move_2.split(",")
             x_cord_2 = int(move_2[0])
             y_cord_2 = int(move_2[1])
-            if 0 > x_cord_2 or x_cord_2 > 3:
+            if 0 >= x_cord_2 or x_cord_2 > 3:
                 print("X coordinate is outside of the scope! Repeat the input.\n")
-            if 0 > y_cord_2 or y_cord_2 > 3:
+            if 0 >= y_cord_2 or y_cord_2 > 3:
                 print("Y coordinate is outside of the scope! Repeat the input.\n")
             for item_check_2_2 in range(0, len(list_of_all_moves_2)):
                 if list_of_all_moves_2[item_check_2_2] == [x_cord_2, y_cord_2]:
